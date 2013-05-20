@@ -11,6 +11,7 @@ from the recipe.__
 
 ##Recipes
 * **default** - Install latest stable release
+* **latest_code** - Install Hadoop-BAM from its latest source code
 
 ##Attributes
 * default['hadoop-BAM-release']: SourceForge download page of Hadoop-BAM
