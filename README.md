@@ -2,18 +2,21 @@
 This is a chef recipe to install [Hadoop-BAM](http://sourceforge.net/projects/hadoop-bam/)
 
 #Requirements
-[Java cookbook](https://github.com/opscode-cookbooks/java)
-[Hadoop cookbook](http://github.com/guillermo-carrasco/cloudera-hadoop)
-[Git cookbook](https://github.com/opscode-cookbooks/git)
+* [Java cookbook](https://github.com/opscode-cookbooks/java)
+* [Hadoop cookbook](http://github.com/guillermo-carrasco/cloudera-hadoop)
+* [Git cookbook](https://github.com/opscode-cookbooks/git)
 
-#Recipes
-**default** - Install latest stable release
+__You can also procure this requirements by your own and remove the dependencies
+from the recipe.__
 
-#Attributes
-default['hadoop-BAM-release']: SourceForge download page of Hadoop-BAM
-default['hadoop-BAM-latest-code']: Hadoop-BAM githup repository
-default['tmp']: Temporal directory for the installation
-default['install\_dir']: Installation directory
+##Recipes
+* **default** - Install latest stable release
+
+##Attributes
+* default['hadoop-BAM-release']: SourceForge download page of Hadoop-BAM
+* default['hadoop-BAM-latest-code']: Hadoop-BAM githup repository
+* default['tmp']: Temporal directory for the installation
+* default['install\_dir']: Installation directory
 
 
 ##Usage
@@ -47,7 +50,7 @@ And run chef-solo
 sudo chef-solo -c solo.rb -j node.json
 ```
 
-#Tested on
+##Tested on
 Ubuntu 12.04
 
 Shoud work on most linux distributions.
