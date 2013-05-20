@@ -1,4 +1,4 @@
-#Description
+##Description
 This is a chef recipe to install [Hadoop-BAM](http://sourceforge.net/projects/hadoop-bam/)
 
 #Requirements
@@ -16,7 +16,7 @@ default['tmp']: Temporal directory for the installation
 default['install\_dir']: Installation directory
 
 
-#Usage
+##Usage
 Depending on how you have Chef installed, you'll use this recipe in one way or another. Here I describe
 how to run this recipe with chef-solo.
 
@@ -33,7 +33,7 @@ If you haven't done it already, create these two files:
 solo.rb
 ```
 file_cache_path "/tmp/chef-solo"
-cookbook_path "<path to your cookbook folder" (i.e /home/guillermo/cookbooks)
+cookbook_path "<path to your cookbook folder>" (i.e /home/guillermo/cookbooks)
 ```
 node.json
 ```
@@ -52,7 +52,5 @@ Ubuntu 12.04
 
 Shoud work on most linux distributions.
 
-And enjoy!
-
-#Collaborations
+##Collaborations
 Please feel free of pull-request, open issues, and comment anything you want :-)
