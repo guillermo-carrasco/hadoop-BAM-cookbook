@@ -2,6 +2,10 @@
 
 This file is used to list changes made in each version of hadoop-BAM-cookbook.
 
+## 0.1.1
+
+* 2013-05-20 - Build and install from latest code
+
 ## 0.1.0:
 
 * Initial release of hadoop-BAM-cookbook
