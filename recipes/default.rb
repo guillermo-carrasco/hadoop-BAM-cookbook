@@ -3,7 +3,7 @@
 # Recipe:: default
 #
 
-#include_recipe "hadoop"
+include_recipe "hadoop"
 
 package "curl" do
   action :install

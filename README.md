@@ -2,12 +2,12 @@
 This is a chef recipe to install [Hadoop-BAM](http://sourceforge.net/projects/hadoop-bam/)
 
 #Requirements
-* [Java cookbook](https://github.com/opscode-cookbooks/java)
-* [Hadoop cookbook](http://github.com/guillermo-carrasco/cloudera-hadoop)
+* [Hadoop cookbook](http://github.com/guillermo-carrasco/cloudera-hadoop) (which also installs
+[Java cookbook](https://github.com/opscode-cookbooks/java))
 * [Git cookbook](https://github.com/opscode-cookbooks/git)
 
-__You can also procure this requirements by your own and remove the dependencies
-from the recipe.__
+_You can also prvide this requirements by your own and remove the dependencies
+from the recipe. Keep in mind that you need Java SDK and ant_
 
 ##Recipes
 * **default** - Install latest stable release
@@ -26,7 +26,12 @@ how to run this recipe with chef-solo.
 
 ###Prepare the environment
 First, create a folder ```cookbooks``` where you'll put all your cookbooks. Clone this repository and its
-requirements there.
+requirements there. You can clone my [cookbooks](http://github.com/guillermo-carrasco/cookbooks.git) repository
+with:
+
+		git clone --recursive http://github.com/guillermo-carrasco/cookbooks.git
+
+to pull all the cookbooks at once.
 
 ###Custom your installation
 Edit the attributes of the recipe you're going to use at your convinience.
