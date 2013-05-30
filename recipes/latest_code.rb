@@ -8,7 +8,7 @@ include_recipe "git"
 
 #Checkot Hdoop-BAM from Git
 git "Checking out hadoop-BAM code" do
-    repository  "http://git.code.sf.net/p/hadoop-bam/code"
+    repository  "#{node['hadoop-BAM-latest-code']}"
     action :sync
     destination "#{node['install_dir']}/hadoop-BAM"
 end
