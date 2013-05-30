@@ -23,7 +23,7 @@ end
 ruby_block "edit-bashrc" do
   block do
     file = Chef::Util::FileEdit.new("#{ENV['HOME']}/.bashrc")
-    file.insert_line_if_no_match("HADOOP_BAM", "HADOOP_BAM=#{node['install_dir']}")
+    file.insert_line_if_no_match("HADOOP_BAM", "HADOOP_BAM=#{node['install_dir']}/hadoop-BAM")
     file.write_file
   end
 end
