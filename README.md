@@ -47,7 +47,7 @@ cookbook_path "<path to your cookbook folder>" (i.e /home/guillermo/cookbooks)
 node.json
 ```
 {
-    "run_list": ["recipe[hadoop-BAM]"]
+    "run_list": ["recipe[hadoop-BAM-cookbook]"]
 }
 ```
 
