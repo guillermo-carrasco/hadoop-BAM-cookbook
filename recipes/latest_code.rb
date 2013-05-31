@@ -20,10 +20,14 @@ execute "Compiling hadoop-BAM" do
 end
 
 #Create a file in /etc/profile.d to export HADOOP_BAM variable
+directory "/etc/profile.d" do
+  mode 00755
+end
+
 hadoop_home = { :value => "#{node['install_dir']}/hadoop-BAM" }
 template '/etc/profile.d/hadoop_bam.sh' do
     source 'hadoop_bam.erb'
-    mode 0644
+    mode 0755
     owner "root"
     group "root"
     action :create
