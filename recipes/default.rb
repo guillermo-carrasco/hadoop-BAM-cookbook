@@ -28,11 +28,20 @@ execute "Moving hadoop-BAM to the installation directory" do
     command "cp -r  #{node['tmp']}/#{hadoop_bam} #{node['install_dir']}"
 end
 
-#Add the variable HADOOP_BAM to bashrc
-ruby_block "edit-bashrc" do
+#Create a file in /etc/profile.d to export HADOOP_BAM variable
+hadoop_home = { :value => "#{node['install_dir']}/#{hadoop_bam}" }
+template '/etc/profile.d/hadoop_bam.sh' do
+    source 'hadoop_bam.erb'
+    mode 0644
+    owner "root"
+    group "root"
+    action :create
+    variables hadoop_home
+end
+
+#Set the environment variable for this provess
+ruby_block "Setting HADOOP_BAM environment variable" do
   block do
-    file = Chef::Util::FileEdit.new("#{ENV['HOME']}/.bashrc")
-    file.insert_line_if_no_match("HADOOP_BAM", "HADOOP_BAM=#{node['install_dir']}/#{hadoop_bam}")
-    file.write_file
+    ENV['HADOOP_BAM'] = "#{node['install_dir']}/#{hadoop_bam}"
   end
 end
