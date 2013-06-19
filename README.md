@@ -10,12 +10,13 @@ _You can also prvide this requirements by your own and remove the dependencies
 from the recipe. Keep in mind that you need Java SDK and ant_
 
 ##Recipes
-* **default** - Install latest stable release
-* **latest_code** - Install Hadoop-BAM from its latest source code
+* **default** - Install from source code
+* **precompiled** - Install Hadoop-BAM from its latest precompiled jar
 
 ##Attributes
-* default['hadoop-BAM-release']: SourceForge download page of Hadoop-BAM
-* default['hadoop-BAM-latest-code']: Hadoop-BAM githup repository
+* default['hadoop-BAM-release-jar']: Download page for Hadoop-BAM jar
+* default['hadoop-BAM-repo']: Hadoop-BAM git repository
+* default['hadoop-BAM-version']: a source code revision (a tag, a branch or a commit)
 * default['tmp']: Temporal directory for the installation
 * default['install\_dir']: Installation directory
 
