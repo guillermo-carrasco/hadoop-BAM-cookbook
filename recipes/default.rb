@@ -1,37 +1,33 @@
 #
 # Cookbook Name:: hadoop-BAM-cookbook
-# Recipe:: default
 #
 
+include_recipe "hadoop"
+include_recipe "git"
 
-package "curl" do
-  action :install
+#Checkot Hdoop-BAM from Git
+git "Checking out hadoop-BAM code" do
+    repository  "#{node['hadoop-BAM-repo']}"
+		reference   "#{node['hadoop-BAM-version']}"
+    action :sync
+    destination "#{node['install_dir']}/hadoop-BAM"
 end
 
-#Create temporary directory for the installation
-directory node['tmp'] do
-    mode 0755
-    recursive true
-end.run_action(:create)
-
-#Download the latest release of hadoop-BAM.
-execute "Downloding latest Hadoop-BAM release from SourceForge" do
-    cwd "#{node['tmp']}"
-    command "curl -O -J -L #{node['hadoop-BAM-release']} && tar xvzf * && rm *gz"
-    action :nothing
-end.run_action(:run)
-
-hadoop_bam = %x( ls #{node['tmp']} ).strip
-
-execute "Moving hadoop-BAM to the installation directory" do
-    command "cp -r  #{node['tmp']}/#{hadoop_bam} #{node['install_dir']}"
+#Compile Hadoop-BAM. Requires java SDK!
+execute "Compiling hadoop-BAM" do
+    command "cd #{node['install_dir']}/hadoop-BAM && ant"
+    action :run
 end
 
 #Create a file in /etc/profile.d to export HADOOP_BAM variable
-hadoop_home = { :value => "#{node['install_dir']}/#{hadoop_bam}" }
+directory "/etc/profile.d" do
+  mode 00755
+end
+
+hadoop_home = { :value => "#{node['install_dir']}/hadoop-BAM" }
 template '/etc/profile.d/hadoop_bam.sh' do
     source 'hadoop_bam.erb'
-    mode 0644
+    mode 0755
     owner "root"
     group "root"
     action :create
@@ -41,6 +37,6 @@ end
 #Set the environment variable for this provess
 ruby_block "Setting HADOOP_BAM environment variable" do
   block do
-    ENV['HADOOP_BAM'] = "#{node['install_dir']}/#{hadoop_bam}"
+    ENV['HADOOP_BAM'] = "#{node['install_dir']}/hadoop-BAM"
   end
 end
